@@ -397,6 +397,7 @@ public class ListadeVetores {
         }
         */
         //16.
+        /*
         Scanner sc = new Scanner(System.in);
         int[] vet = new int[8];
         int[] repet = new int[8];
@@ -430,7 +431,7 @@ public class ListadeVetores {
         for (int i = 0; i < contador; i++) {
             System.out.println(repet[i]);
             System.out.format("E aparecem vezes %d\n" ,contador);
-        }
+        }*/
     }
 
 }
