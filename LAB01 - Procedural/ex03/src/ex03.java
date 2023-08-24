@@ -1,9 +1,9 @@
 import java.util.Scanner;
 
-public class ListadeVetores {
+public class ex03 {
     public static void main(String[] args) {
          /*
-        1.
+        //1.
         Scanner sc = new Scanner(System.in);
         int[] listInt = new int[6];
         int i = 0;
@@ -24,7 +24,7 @@ public class ListadeVetores {
         System.out.format("A lista de numeros eh:\n%d %d %d %d %d %d",listInt[0],listInt[1],listInt[2],listInt[3],listInt[4],listInt[5]);
         */
         /*
-        2.
+        //2.
         Scanner sc = new Scanner(System.in);
         int[] listInt = new int[6];
         int i = 0;
@@ -57,7 +57,7 @@ public class ListadeVetores {
 
         }*/
         /*
-         4.
+        //4.
         Scanner sc = new Scanner(System.in);
         int[] listInt = new int[6];
         int i = 0;
@@ -79,7 +79,7 @@ public class ListadeVetores {
         }
         */
         /*
-        5.
+        //5.
         Scanner sc = new Scanner(System.in);
         int[] listInt = new int[5];
         int i = 0;
@@ -110,7 +110,7 @@ public class ListadeVetores {
         System.out.format("A media eh: %f\n",media);
         */
         /* 
-        6.
+        //6.
         Scanner sc = new Scanner(System.in);
         int[] listInt = new int[5];
         int i = 0;
@@ -397,6 +397,7 @@ public class ListadeVetores {
         }
         */
         //16.
+        /*
         Scanner sc = new Scanner(System.in);
         int[] vet = new int[8];
         int[] repet = new int[8];
@@ -430,7 +431,7 @@ public class ListadeVetores {
         for (int i = 0; i < contador; i++) {
             System.out.println(repet[i]);
             System.out.format("E aparecem vezes %d\n" ,contador);
-        }
+        }*/
     }
 
 }

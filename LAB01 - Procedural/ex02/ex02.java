@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class AlteraPreco {
+public class ex02 {
     public static void main(String[] args) {
 
         String[] nome = new String[4];
@@ -81,14 +81,12 @@ public class AlteraPreco {
                     System.out.printf("Erro ao atualizar!");
                 }
             }
-                default->{
-                    System.out.println("Opcao Invalida");
                 }
                 }
 
-            }
-            
         }
+            
+        
     
     public static float alterapreco(float preco, float porcentagem){
         float temp;
