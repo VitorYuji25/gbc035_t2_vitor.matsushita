@@ -38,7 +38,7 @@ public class vendedor extends funcionario{
         return salario;
     }
     public void setSalario(double salario_vendedor) {
-        this.salario = salario_vendedor;
+        this.salario = salario_vendedor + salario_fixo;
     }
 
     
