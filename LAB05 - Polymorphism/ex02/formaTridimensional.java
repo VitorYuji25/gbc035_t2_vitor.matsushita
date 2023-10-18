@@ -2,14 +2,12 @@ package ex02;
 
 public class formaTridimensional extends forma{
 
-    int raio;
-    
-
-    @Override
-    public void obterArea(){
+    public formaTridimensional(){
+        super();
     }
 
-    public void obterVolume(){
+    public double obterVolume(){
+        return 1.5 * Math.pow(super.obterArea(), 3);
     }
     
 }
