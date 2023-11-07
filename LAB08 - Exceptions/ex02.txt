@@ -1,0 +1,12 @@
+# Ex02
+ 
+- Qual a diferença entre o throw e throws ? Justifique explicado o que cada comando faz
+->throw: Lançamento de uma exceção nova, para determinada condição durante a execução ou chamada de método.
+->throws: Passa a responsabilidade do tratamento da exceção para o método que chamou atualmente.Usado na definição do método
+
+- Indique a diferença entre checked e uncheked exceptions
+->Checked Exceptions: São aquelas exceções que podem ser previstas e tratadas no momento da criação do código ou em tempo de compilação.
+->Uncheked Exceptions: São as exceções que não são de capturada obrigatória no bloco catch do try/catch. Elas podem ser lançadas por um
+                       programa e devem ser tratadas pelo programador. Essas exceções precisam ser declaradas na assinatura do
+                       metódo usando a palavra reservada throws.
+                       Exemplo: IOException é um exemplo de exception unchecked.
