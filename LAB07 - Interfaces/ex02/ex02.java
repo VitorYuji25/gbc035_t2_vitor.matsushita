@@ -18,7 +18,7 @@ public class ex02 {
         servi[2] = new Serviço(16.50);
 
         Classificador.ordena(clientes);
-        System.out.println(clientes);
+        System.out.println(clientes[0]);
         Classificador.ordena(prod);
         System.out.println(prod);
         Classificador.ordena(servi);
