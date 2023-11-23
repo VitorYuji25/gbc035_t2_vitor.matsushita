@@ -19,12 +19,14 @@ public class Garcom extends Funcionario implements Exibir{
 	private String dia_de_folga;
 	private static final int LIMITE_PEDIDOS = 30;
 	
+	//Construtor Garçom
 	public Garcom(String nome, String CPF, String RG, String estado_civil, String endereco, LocalDate data_admissao,
 			String num_carteira_trabalho, String dia_de_folga) {
 		super(nome, CPF, RG, estado_civil, endereco, data_admissao, num_carteira_trabalho);
 		this.dia_de_folga = dia_de_folga;
 	}
 
+	//GETTERS AND SETTERS
 	public Double getSalario_base() {
 		return salario_base;
 	}
@@ -37,6 +39,8 @@ public class Garcom extends Funcionario implements Exibir{
 		this.dia_de_folga = dia_de_folga;
 	}
 
+
+	//Calculo do Salario Garçom
     public Double calcularSalario(double gratificacao, int numeroPedidosMensal) {
         // Verifica se o número de pedidos por mês excede o limite
         if (numeroPedidosMensal > LIMITE_PEDIDOS) {

@@ -23,10 +23,13 @@ import enum_entites.Categoria;
 import enum_entites.Tipo_Embalagem;
 import enum_entites.Tipo_Pagamento;
 import exception.DomainException;
+import java.io.*;
+//import persistencia.arquivos;
 
 public class Restaurante {
 
 	public static void main(String[] args) {
+		
 
 		Locale.setDefault(Locale.US);
 		try (Scanner sc = new Scanner(System.in)) {
@@ -42,6 +45,56 @@ public class Restaurante {
 			List<Item> historicoItensEscolhidos = new ArrayList<>();
 			Cozinheiro cozinheiro = new Cozinheiro(null, null, null, null, null, null, null, list_item);
 			Pedido pedido = new Pedido(garcom, cozinheiro, null, null, null, null);
+
+			
+			String[] vetGarcons;
+			String[] vetCozinheiros;
+			String[] vetItens;
+			String l,l2,l3;
+
+			System.out.println("Deseja acessar os arquivos: ");
+			System.out.println("1 - Sim");
+			System.out.println("2 - Não");
+			l = sc.nextLine();
+			if (l.equals("1")) {
+			//Acesso ao arquivo de Garcons
+			try{
+			FileReader ent = new FileReader("arqGarcom.dat");
+			BufferedReader rd = new BufferedReader(ent);
+			while (( l = rd . readLine () ) != null ) {
+				vetGarcons = l.split(":");
+			}rd.close();
+			}catch(IOException e1){
+			System.out.println("Erro ao acessar o arquivo");
+			}
+			//Acesso ao arquivo de Cozinheiros
+			try{
+			FileReader ent = new FileReader("arqCozinheiros.dat");
+			BufferedReader rd = new BufferedReader(ent);
+			while (( l2 = rd . readLine () ) != null ) {
+				vetCozinheiros = l2.split(":");
+			}
+			rd.close();
+			}catch(IOException e2){
+			System.out.println("Erro ao acessar o arquivo");
+			}
+			//Acesso ao arquivo de Itens
+			try{
+			FileReader ent = new FileReader("arqItens.dat");
+			BufferedReader rd = new BufferedReader(ent);
+			while (( l3 = rd . readLine () ) != null ) {
+				vetItens = l3.split(":");
+			}
+			rd.close();
+			}catch(IOException e3){
+			System.out.println("Erro ao acessar o arquivo");
+			}
+		System.out.println("Arquivo Acessado Sucesso!!");
+		}
+
+
+		
+
 
 			System.out.println("BEM-VINDO AO BANCO DE DADOS DO RESTAURANTE GUSTEAUS´S!!!");
 			System.out.println("Primeiramente, vamos ao cadastro dos Funcionários");
@@ -354,6 +407,7 @@ public class Restaurante {
 
 			System.out.println();
 			
+			
 			try {
 				while (continuarPedidos) {
 
@@ -496,7 +550,51 @@ public class Restaurante {
 			    System.out.println("Erro de entrada: O tipo de entrada fornecido é inválido.");
 			    System.out.println("Certifique-se de inserir o tipo de dado correto e tente novamente.");
 			} 
+				/*
+			List<Garcom> garcons = new ArrayList<>();
+			List<Cozinheiro> cozinheiros = new ArrayList<>();
+			List<Item> list_item = new ArrayList<>();
+			List<Item> itensEscolhidos = new ArrayList<>();
+			List<Item> historicoItensEscolhidos = new ArrayList<>();
+				 */
+				try{
+				FileWriter arq = new FileWriter("arqGarcom.dat");
+				PrintWriter out = new PrintWriter(arq);
+				// Usando um loop for para percorrer o ArrayList e acessar cada objeto
+				for (int i = 0; i < garcons.size(); i++) {
+					Garcom elem1 = garcons.get(i);
+					out . println ( elem1 );
+ 					
+				}
+				out . close () ;
+			} catch ( IOException erro ) {
+				System . out . println (" Erro na escrita dos dados Gracons ");
+			}
+			try{
+				FileWriter arq = new FileWriter("arqCozinheiros.dat");
+				PrintWriter out = new PrintWriter(arq);
+				for (int i = 0; i < cozinheiros.size(); i++) {
+					Cozinheiro elem2 = cozinheiros.get(i);
+					out . println ( elem2 );
+				}
+ 					out . close () ;
+			} catch ( IOException erro ) {
+				System . out . println (" Erro na escrita dos dados Cozinheiros ");
+			}
+			try{
+				FileWriter arq = new FileWriter("arqItens.dat");
+				PrintWriter out = new PrintWriter(arq);
+				for (int i = 0; i < historicoItensEscolhidos.size(); i++) {
+					Item elem3 = historicoItensEscolhidos.get(i);
+					out . println ( elem3 );
+				}
+ 					out . close () ;
+			} catch ( IOException erro ) {
+				System . out . println (" Erro na escrita dos dados Itens ");
+			}
+
+			
 			sc.close();
 		}
+		}
 	}
-}

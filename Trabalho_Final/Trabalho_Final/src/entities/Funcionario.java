@@ -46,6 +46,7 @@ public class Funcionario {
 		this.num_carteira_trabalho = num_carteira_trabalho;
 	}
 
+	//GETTERS AND SETTERS
 	public String getNome() {
 		return nome;
 	}

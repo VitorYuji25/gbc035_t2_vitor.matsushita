@@ -14,8 +14,9 @@ public abstract class Item {
 		this.preco_de_custo = preco_de_custo;
 	}
 
+	//GETTERS AND SETTERS
     public abstract String getTipo();
-	
+
 	public String getNome_comercial() {
 		return nome_comercial;
 	}
