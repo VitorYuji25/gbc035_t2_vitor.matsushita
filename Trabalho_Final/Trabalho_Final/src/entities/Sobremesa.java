@@ -3,6 +3,7 @@ package entities;
 import java.time.LocalTime;
 import java.util.List;
 
+import enum_entites.Categoria;
 import interfaces.Exibir;
 
 /*
@@ -21,9 +22,9 @@ public class Sobremesa extends Item implements Exibir{
 
 
 	//Construtor Sobremesa
-	public Sobremesa(String nome_comercial, String codigo_id, Double preco_unitario, Double preco_de_custo,
+	public Sobremesa(String nome_comercial, String codigo_id, Double preco_unitario, Double preco_de_custo,Categoria categoria,
 			List<Ingrediente> ingrediente, String descricao, LocalTime tempo_preparo, Double num_caloria) {
-		super(nome_comercial, codigo_id, preco_unitario, preco_de_custo);
+		super(nome_comercial, codigo_id, preco_unitario, preco_de_custo,categoria);
 		this.ingrediente = ingrediente;
 		this.descricao = descricao;
 		this.tempo_preparo = tempo_preparo;

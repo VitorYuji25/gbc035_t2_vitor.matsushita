@@ -1,17 +1,21 @@
 package entities;
 
+import enum_entites.Categoria;
+
 public abstract class Item {
 	
 	private String nome_comercial;
 	private String codigo_id;
 	private Double preco_unitario;
 	private Double preco_de_custo;
+	private Categoria categoria;
 	
-	public Item(String nome_comercial, String codigo_id, Double preco_unitario, Double preco_de_custo) {
+	public Item(String nome_comercial, String codigo_id, Double preco_unitario, Double preco_de_custo, Categoria categoria) {
 		this.nome_comercial = nome_comercial;
 		this.codigo_id = codigo_id;
 		this.preco_unitario = preco_unitario;
 		this.preco_de_custo = preco_de_custo;
+		this.categoria = categoria;
 	}
 
 	//GETTERS AND SETTERS
@@ -44,6 +48,14 @@ public abstract class Item {
 	public void setPreco_de_custo(Double preco_de_custo) {
 		this.preco_de_custo = preco_de_custo;
 	}
+
+	public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
 
 	public String toString() {
 		return "O nome comercial do item cadastrado é: " + nome_comercial + ", codigo identificador: " + codigo_id + ", preço unitário: "

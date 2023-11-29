@@ -25,7 +25,7 @@ public class Cozinheiro extends Funcionario implements Exibir{
 		this.comida_cardapio = new ArrayList<>();
 	}
 
-	//Calculo do Salario Cozinheiro//Calculo do Salario Cozinheiro
+	//Calculo do Salario Cozinheiro
 	public Double calcularSalario(List<Item> comida_cardapio) {
 		int totalPratosPrincipais = 0;
 		int totalSobremesas = 0;

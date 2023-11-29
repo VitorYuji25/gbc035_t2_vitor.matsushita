@@ -29,7 +29,6 @@ import java.io.*;
 public class Restaurante {
 
 	public static void main(String[] args) {
-		
 
 		Locale.setDefault(Locale.US);
 		try (Scanner sc = new Scanner(System.in)) {
@@ -46,55 +45,51 @@ public class Restaurante {
 			Cozinheiro cozinheiro = new Cozinheiro(null, null, null, null, null, null, null, list_item);
 			Pedido pedido = new Pedido(garcom, cozinheiro, null, null, null, null);
 
-			
 			String[] vetGarcons;
 			String[] vetCozinheiros;
 			String[] vetItens;
-			String l,l2,l3;
+			String l, l2, l3;
 
 			System.out.println("Deseja acessar os arquivos: ");
 			System.out.println("1 - Sim");
 			System.out.println("2 - Não");
 			l = sc.nextLine();
 			if (l.equals("1")) {
-			//Acesso ao arquivo de Garcons
-			try{
-			FileReader ent = new FileReader("arqGarcom.dat");
-			BufferedReader rd = new BufferedReader(ent);
-			while (( l = rd . readLine () ) != null ) {
-				vetGarcons = l.split(":");
-			}rd.close();
-			}catch(IOException e1){
-			System.out.println("Erro ao acessar o arquivo");
+				// Acesso ao arquivo de Garcons
+				try {
+					FileReader ent = new FileReader("arqGarcom.dat");
+					BufferedReader rd = new BufferedReader(ent);
+					while ((l = rd.readLine()) != null) {
+						vetGarcons = l.split(":");
+					}
+					rd.close();
+				} catch (IOException e1) {
+					System.out.println("Erro ao acessar o arquivo");
+				}
+				// Acesso ao arquivo de Cozinheiros
+				try {
+					FileReader ent = new FileReader("arqCozinheiros.dat");
+					BufferedReader rd = new BufferedReader(ent);
+					while ((l2 = rd.readLine()) != null) {
+						vetCozinheiros = l2.split(":");
+					}
+					rd.close();
+				} catch (IOException e2) {
+					System.out.println("Erro ao acessar o arquivo");
+				}
+				// Acesso ao arquivo de Itens
+				try {
+					FileReader ent = new FileReader("arqItens.dat");
+					BufferedReader rd = new BufferedReader(ent);
+					while ((l3 = rd.readLine()) != null) {
+						vetItens = l3.split(":");
+					}
+					rd.close();
+				} catch (IOException e3) {
+					System.out.println("Erro ao acessar o arquivo");
+				}
+				System.out.println("Arquivo Acessado Sucesso!!");
 			}
-			//Acesso ao arquivo de Cozinheiros
-			try{
-			FileReader ent = new FileReader("arqCozinheiros.dat");
-			BufferedReader rd = new BufferedReader(ent);
-			while (( l2 = rd . readLine () ) != null ) {
-				vetCozinheiros = l2.split(":");
-			}
-			rd.close();
-			}catch(IOException e2){
-			System.out.println("Erro ao acessar o arquivo");
-			}
-			//Acesso ao arquivo de Itens
-			try{
-			FileReader ent = new FileReader("arqItens.dat");
-			BufferedReader rd = new BufferedReader(ent);
-			while (( l3 = rd . readLine () ) != null ) {
-				vetItens = l3.split(":");
-			}
-			rd.close();
-			}catch(IOException e3){
-			System.out.println("Erro ao acessar o arquivo");
-			}
-		System.out.println("Arquivo Acessado Sucesso!!");
-		}
-
-
-		
-
 
 			System.out.println("BEM-VINDO AO BANCO DE DADOS DO RESTAURANTE GUSTEAUS´S!!!");
 			System.out.println("Primeiramente, vamos ao cadastro dos Funcionários");
@@ -128,8 +123,8 @@ public class Restaurante {
 				sc.nextLine();
 				String num_carteira_trabalho = sc.nextLine();
 
-				garcom = new Garcom(nome, funcionario.getCPF(), RG, estado_civil, endereco, data_admissao, num_carteira_trabalho,
-						dia_de_folga);
+				garcom = new Garcom(nome, funcionario.getCPF(), RG, estado_civil, endereco, data_admissao,
+						num_carteira_trabalho, dia_de_folga);
 				System.out.println();
 				garcom.exibirDetalhes(); // método da interface
 				System.out.println(garcom);
@@ -146,6 +141,7 @@ public class Restaurante {
 					cadastrarGarcom = false;
 				}
 			}
+			//Utilização do Random de Garcons
 			garcom = new Garcom(garcom.getNome(), garcom.getCPF(), garcom.getRG(), garcom.getEstado_civil(),
 					garcom.getEndereco(), garcom.getData_admissao(), garcom.getNum_carteira_trabalho(),
 					garcom.getDia_de_folga());
@@ -218,9 +214,8 @@ public class Restaurante {
 					LocalTime tempo_preparo = LocalTime.parse(sc.next(), fmt);
 
 					Prato_Principal prato_principal = new Prato_Principal(nome_comercial, codigo_id, preco_unitario,
-							preco_de_custo, ingredientes, descricao, tempo_preparo);
+							preco_de_custo,categoria, ingredientes, descricao, tempo_preparo);
 
-					garcom.exibirDetalhes(); // método da interface
 					list_item.add(prato_principal);
 					cozinheiro.adicionarItemAoCardapio(prato_principal);
 					System.out.println();
@@ -271,7 +266,7 @@ public class Restaurante {
 						System.out.println("Escolha inválida para tipo de embalagem!");
 					}
 
-					Bebida bebida = new Bebida(nome_comercial, codigo_id, preco_unitario, preco_de_custo,
+					Bebida bebida = new Bebida(nome_comercial, codigo_id, preco_unitario, preco_de_custo, categoria,
 							tamanho_embalagem, tipoEmbalagem);
 
 					System.out.println();
@@ -318,8 +313,8 @@ public class Restaurante {
 					System.out.print("Digite o número de caloria da sobremesa: ");
 					Double num_caloria = sc.nextDouble();
 
-					Sobremesa sobremesa = new Sobremesa(nome_comercial, codigo_id, num_caloria, num_caloria,
-							ingredientes, descricao, tempo_preparo, num_caloria);
+					Sobremesa sobremesa = new Sobremesa(nome_comercial, codigo_id, preco_unitario, preco_de_custo,
+							categoria, ingredientes, descricao, tempo_preparo, num_caloria);
 
 					sobremesa.exibirDetalhes(); // método da interface
 					list_item.add(sobremesa);
@@ -359,11 +354,13 @@ public class Restaurante {
 				sc.nextLine();
 				String num_carteira_trabalho = sc.nextLine();
 
-				cozinheiro = new Cozinheiro(nome, funcionario.getCPF(), RG, estado_civil, endereco, data_admissao, num_carteira_trabalho,
-						list_item);
+				cozinheiro = new Cozinheiro(nome, funcionario.getCPF(), RG, estado_civil, endereco, data_admissao,
+						num_carteira_trabalho, list_item);
 				System.out.println();
 				System.out.println(cozinheiro);
 				cozinheiros.add(cozinheiro);
+
+				cozinheiro.exibirDetalhes(); // método da interface
 
 				System.out.print("Deseja cadastrar outro cozinheiro? (s/n): ");
 				String resposta = sc.next();
@@ -377,20 +374,10 @@ public class Restaurante {
 				}
 			}
 
+			//Uso do Random de Cozinheiros
 			cozinheiro = new Cozinheiro(cozinheiro.getNome(), cozinheiro.getCPF(), cozinheiro.getRG(),
 					cozinheiro.getEstado_civil(), cozinheiro.getEndereco(), cozinheiro.getData_admissao(),
 					cozinheiro.getNum_carteira_trabalho(), list_item);
-
-			cozinheiro.exibirDetalhes(); // método da interface
-			
-			System.out.println();
-			System.out.println("DADOS CADASTRADOS CORRETAMENTE!!!");
-			System.out.println();
-			System.out.println("BEM-VINDO AO RESTAURANTE GUSTEAUS´S!!!");
-			System.out.println();
-
-			boolean continuarPedidos = true;
-			int total_pedidos = 0;
 
 			System.out.println("Funcinoarios cadastrados no sistema: ");
 			System.out.println();
@@ -406,10 +393,20 @@ public class Restaurante {
 			}
 
 			System.out.println();
-			
-			
+
+			System.out.println();
+			System.out.println("DADOS CADASTRADOS CORRETAMENTE!!!");
+			System.out.println();
+			System.out.println("BEM-VINDO AO RESTAURANTE GUSTEAUS´S!!!");
+			System.out.println();
+
+			boolean continuarPedidos = true;
+			int total_pedidos = 0;
+
 			try {
 				while (continuarPedidos) {
+
+					boolean escolhendoItens = true;
 
 					// Escolher aleatoriamente um garçom
 					Random random = new Random();
@@ -419,12 +416,56 @@ public class Restaurante {
 					Cozinheiro cozinheiroAleatorio = cozinheiros.get(random.nextInt(cozinheiros.size()));
 
 					// Exibir o nome dos funcionários escolhidos aleatoriamente
-					System.out.println("Garçom que irá te atender: " + garcomAleatorio.getNome());
-					System.out.println("Cozinheiro(a) que irá fazer os pratos: " + cozinheiroAleatorio.getNome());
+					System.out.println("Garçom que irá te atender hoje é: " + garcomAleatorio.getNome());
+					System.out
+							.println("Cozinheiro(a) que irá fazer os seus pratos é: " + cozinheiroAleatorio.getNome());
 
-					System.out.print("Informe uma data para a realização do pedido (dd/MM/yyyy): ");
+					while (escolhendoItens) {
+						System.out.print(cozinheiro.MostrarCardapio(list_item));
+						System.out.print("Escolha um item do cardápio digitando o código identificador: ");
+						String codigoEscolhido = sc.next();
+
+						// Encontrar o item escolhido no cardápio
+						Item itemEscolhido = null;
+						for (Item item : list_item) {
+							if (item.getCodigo_id().equals(codigoEscolhido)) {
+								itemEscolhido = item;
+								break;
+							}
+						}
+
+						// Verificar se o item foi encontrado e adicioná-lo à lista de itens escolhidos
+						if (itemEscolhido != null) {
+							pedido.adicionarItem(itemEscolhido); // Certifique-se de ter a quantidade disponível
+							itensEscolhidos.add(itemEscolhido);
+							System.out.println("Você escolheu: " + itemEscolhido.getNome_comercial());
+							System.out.println("Valor total do pedido: " + pedido.getValor_total());
+						} else {
+							System.out.println("Item não encontrado no cardápio!");
+						}
+
+						System.out.print("Algo mais (s/n)? ");
+						String resposta = sc.next();
+
+						if (resposta.equalsIgnoreCase("n")) {
+							escolhendoItens = false;
+						} else if (!resposta.equalsIgnoreCase("s")) {
+							System.out.println("Resposta inválida. Encerrando o cadastro de pedidos.");
+							escolhendoItens = false;
+						}
+
+						// Exibir a lista de itens escolhidos
+						System.out.println("\nItens escolhidos:");
+						for (Item item : itensEscolhidos) {
+							System.out.println(item.getNome_comercial());
+						}
+					}
+
+					System.out.println();
+					System.out.print(
+							"Informe uma data para a realização do pedido (dd/MM/yyyy), desde que seja uma data futura ou atual: ");
 					LocalDate data_pedido = LocalDate.parse(sc.next(), fmt_2);
-					pedido.verificaData(data_pedido);
+					pedido.verificaData(data_pedido); //Verifica a data do pedido (atual ou futura)
 					System.out.print("Digite a hora de registro (HH:mm): ");
 					LocalTime hora_registro = LocalTime.parse(sc.next(), fmt);
 					System.out.print("Digite a hora que o pagamento foi realizado (HH:mm): ");
@@ -454,52 +495,10 @@ public class Restaurante {
 					default:
 						System.out.println("Escolha inválida para tipo de pagamento!");
 					}
-					
-					boolean escolhendoItens = true;
-					while (escolhendoItens) {
-						System.out.print(cozinheiro.MostrarCardapio(list_item));
-						System.out.print("Escolha um item do cardápio digitando o código identificador: ");
-						String codigoEscolhido = sc.next();
-
-						// Encontrar o item escolhido no cardápio
-						Item itemEscolhido = null;
-						for (Item item : list_item) {
-							if (item.getCodigo_id().equals(codigoEscolhido)) {
-								itemEscolhido = item;
-								break;
-							}
-						}
-
-						// Verificar se o item foi encontrado e adicioná-lo à lista de itens escolhidos
-						if (itemEscolhido != null) {
-					        pedido.adicionarItem(itemEscolhido); // Certifique-se de ter a quantidade disponível
-							itensEscolhidos.add(itemEscolhido);
-							System.out.println("Você escolheu: " + itemEscolhido.getNome_comercial());
-							System.out.println("Valor total do pedido: " + pedido.getValor_total());
-						} else {
-							System.out.println("Item não encontrado no cardápio!");
-						}
-
-						System.out.print("Algo mais (s/n)? ");
-						String resposta = sc.next();
-
-						if (resposta.equalsIgnoreCase("n")) {
-							escolhendoItens = false;
-						} else if (!resposta.equalsIgnoreCase("s")) {
-							System.out.println("Resposta inválida. Encerrando o cadastro de pedidos.");
-							escolhendoItens = false;
-						}
-
-						// Exibir a lista de itens escolhidos
-						System.out.println("\nItens escolhidos:");
-						for (Item item : itensEscolhidos) {
-							System.out.println(item.getNome_comercial());
-						}
-					}
 
 					pedido = new Pedido(garcomAleatorio, cozinheiroAleatorio, data_pedido, hora_registro,
 							hora_pagamento, tipoPagamento);
-					
+
 					pedido.exibirDetalhes(); // método da interface
 					System.out.println(pedido);
 					System.out.print("Deseja cadastrar outro pedido? (s/n): ");
@@ -542,59 +541,57 @@ public class Restaurante {
 							+ String.format("%.2f", cozinheiro_2.calcularSalario(historicoItensEscolhidos)));
 				}
 
-			}
-			catch (DomainException e) {
-			    System.out.println(e.getMessage());
+			} catch (DomainException e) {
+				System.out.println(e.getMessage());
 
 			} catch (InputMismatchException e) {
-			    System.out.println("Erro de entrada: O tipo de entrada fornecido é inválido.");
-			    System.out.println("Certifique-se de inserir o tipo de dado correto e tente novamente.");
-			} 
-				/*
-			List<Garcom> garcons = new ArrayList<>();
-			List<Cozinheiro> cozinheiros = new ArrayList<>();
-			List<Item> list_item = new ArrayList<>();
-			List<Item> itensEscolhidos = new ArrayList<>();
-			List<Item> historicoItensEscolhidos = new ArrayList<>();
-				 */
-				try{
+				System.out.println("Erro de entrada: O tipo de entrada fornecido é inválido.");
+				System.out.println("Certifique-se de inserir o tipo de dado correto e tente novamente.");
+			}
+
+			/*
+			 * List<Garcom> garcons = new ArrayList<>(); List<Cozinheiro> cozinheiros = new
+			 * ArrayList<>(); List<Item> list_item = new ArrayList<>(); List<Item>
+			 * itensEscolhidos = new ArrayList<>(); List<Item> historicoItensEscolhidos =
+			 * new ArrayList<>();
+			 */
+			try {
 				FileWriter arq = new FileWriter("arqGarcom.dat");
 				PrintWriter out = new PrintWriter(arq);
 				// Usando um loop for para percorrer o ArrayList e acessar cada objeto
 				for (int i = 0; i < garcons.size(); i++) {
 					Garcom elem1 = garcons.get(i);
-					out . println ( elem1 );
- 					
+					out.println(elem1);
+
 				}
-				out . close () ;
-			} catch ( IOException erro ) {
-				System . out . println (" Erro na escrita dos dados Gracons ");
+				out.close();
+			} catch (IOException erro) {
+				System.out.println(" Erro na escrita dos dados Gracons ");
 			}
-			try{
+			try {
 				FileWriter arq = new FileWriter("arqCozinheiros.dat");
 				PrintWriter out = new PrintWriter(arq);
 				for (int i = 0; i < cozinheiros.size(); i++) {
 					Cozinheiro elem2 = cozinheiros.get(i);
-					out . println ( elem2 );
+					out.println(elem2);
 				}
- 					out . close () ;
-			} catch ( IOException erro ) {
-				System . out . println (" Erro na escrita dos dados Cozinheiros ");
+				out.close();
+			} catch (IOException erro) {
+				System.out.println(" Erro na escrita dos dados Cozinheiros ");
 			}
-			try{
+			try {
 				FileWriter arq = new FileWriter("arqItens.dat");
 				PrintWriter out = new PrintWriter(arq);
 				for (int i = 0; i < historicoItensEscolhidos.size(); i++) {
 					Item elem3 = historicoItensEscolhidos.get(i);
-					out . println ( elem3 );
+					out.println(elem3);
 				}
- 					out . close () ;
-			} catch ( IOException erro ) {
-				System . out . println (" Erro na escrita dos dados Itens ");
+				out.close();
+			} catch (IOException erro) {
+				System.out.println(" Erro na escrita dos dados Itens ");
 			}
 
-			
 			sc.close();
 		}
-		}
 	}
+}

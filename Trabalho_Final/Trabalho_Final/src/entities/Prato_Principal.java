@@ -3,6 +3,7 @@ package entities;
 import java.time.LocalTime;
 import java.util.List;
 
+import enum_entites.Categoria;
 import interfaces.Exibir;
 
 /*
@@ -20,12 +21,13 @@ public class Prato_Principal extends Item implements Exibir{
 
 
 	//Construtor Parto Principal
-	public Prato_Principal(String nome_comercial, String codigo_id, Double preco_unitario, Double preco_de_custo,
+	public Prato_Principal(String nome_comercial, String codigo_id, Double preco_unitario, Double preco_de_custo,Categoria categoria,
 			List<Ingrediente> ingrediente, String descricao, LocalTime tempo_preparo) {
-		super(nome_comercial, codigo_id, preco_unitario, preco_de_custo);
+		super(nome_comercial, codigo_id, preco_unitario, preco_de_custo,categoria);
 		this.ingrediente = ingrediente;
 		this.descricao = descricao;
 		this.tempo_preparo = tempo_preparo;
+
 	}
 
 
